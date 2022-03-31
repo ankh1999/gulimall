@@ -23,7 +23,7 @@ import com.atguigu.gulimall.common.utils.R;
  *
  * @author cyz
  * @email sunlightcs@gmail.com
- * @date 2022-03-31 19:50:36
+ * @date 2022-03-31 20:13:21
  */
 @RestController
 @RequestMapping("product/attrgroup")
@@ -35,6 +35,7 @@ public class AttrGroupController {
      * 列表
      */
     @RequestMapping("/list")
+    //@RequiresPermissions("product:attrgroup:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrGroupService.queryPage(params);
 
@@ -46,6 +47,7 @@ public class AttrGroupController {
      * 信息
      */
     @RequestMapping("/info/{attrGroupId}")
+    //@RequiresPermissions("product:attrgroup:info")
     public R info(@PathVariable("attrGroupId") Long attrGroupId){
 		AttrGroupEntity attrGroup = attrGroupService.getById(attrGroupId);
 
@@ -56,6 +58,7 @@ public class AttrGroupController {
      * 保存
      */
     @RequestMapping("/save")
+    //@RequiresPermissions("product:attrgroup:save")
     public R save(@RequestBody AttrGroupEntity attrGroup){
 		attrGroupService.save(attrGroup);
 
@@ -66,6 +69,7 @@ public class AttrGroupController {
      * 修改
      */
     @RequestMapping("/update")
+    //@RequiresPermissions("product:attrgroup:update")
     public R update(@RequestBody AttrGroupEntity attrGroup){
 		attrGroupService.updateById(attrGroup);
 
@@ -76,6 +80,7 @@ public class AttrGroupController {
      * 删除
      */
     @RequestMapping("/delete")
+    //@RequiresPermissions("product:attrgroup:delete")
     public R delete(@RequestBody Long[] attrGroupIds){
 		attrGroupService.removeByIds(Arrays.asList(attrGroupIds));
 
